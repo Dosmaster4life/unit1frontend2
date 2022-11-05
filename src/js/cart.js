@@ -3,12 +3,10 @@ function getLocalStorage(key) {
 }
 
 function getCartContents() {
-  let markup = "";
-  const cartItems = getLocalStorage("so-cart");
-  let cart =  [];
-  cart.push(cartItems)
-  const htmlItems = cart.map((item) => renderCartItem(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  const cartItems = getLocalStorage('so-cart')
+ if(cartItems === null) { return [] }
+  const htmlItems = cartItems.map(item => renderCartItem(item))
+  document.querySelector('.product-list').innerHTML = htmlItems.join('')
   // document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
 }
 
