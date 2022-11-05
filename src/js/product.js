@@ -30,14 +30,27 @@ function getProductsData() {
 
 // add to cart button event handler
 function addToCart(e) {
-  // get the product id
+   
    const product = products.find(item => item.Id === e.target.dataset.id)
-  // get the cart from local storage
-  let localItems = getLocalStorage('so-cart')
-  // if there is no cart in local storage, create an array with 1 product, and set it in local storage other wise add the product to the cart in local storage
-   localItems === null ?  setLocalStorage('so-cart', [product]) :  setLocalStorage('so-cart',  localItems.push(product))
-}
+ 
+  let items = getLocalStorage('so-cart')
 
+  // if there are no items in the cart, add the item to the cart
+   if (items === null) {
+     setLocalStorage('so-cart', [product])
+   } else {
+    // check if  product is already in the cart called items
+    const item = items.find(item => item.Id === product.Id)
+      if (item) {
+        // if it is, increase the quantity in the cart, and update the cart
+
+      }
+        // if the item is not in the cart, add it to the cart
+      items.push(product)
+      setLocalStorage('so-cart', items)
+   
+}
+}
 getProductsData();
 // add listener to Add to Cart button
 document.getElementById("addToCart").addEventListener("click", addToCart);
