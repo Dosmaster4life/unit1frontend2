@@ -1,6 +1,7 @@
 import { setLocalStorage } from './utils.js';
 import { getLocalStorage } from './utils.js';
 
+
 export default class ProductDetails {
   constructor(productId, dataSource){
     this.productId = productId;
@@ -17,22 +18,10 @@ export default class ProductDetails {
   }
   addToCart() {
     
-//     let items = getLocalStorage('so-cart')
+   let items = getLocalStorage('so-cart')
+   items.push(this.product)
+       setLocalStorage('so-cart', items)
 
-//   // if there are no items in the cart, add the item to the cart
-//    if (items === null) {
-//      setLocalStorage('so-cart', [this.product])
-//    } else {
-//     // check if  product is already in the cart called items
-//     // const item = items.find(item => item.Id === this.product.Id)
-//     //   if (item) {
-//     //     // if it is, increase the quantity in the cart, and update the cart
-
-//     //   }
-//         // if the item is not in the cart, add it to the cart
-//       items.push(this.product)
-//       setLocalStorage('so-cart', items)
-//   }
 }
   renderProductDetails() {
     return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
