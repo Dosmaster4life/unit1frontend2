@@ -10,11 +10,6 @@ export default class ProductList {
         const list = await this.dataSource.getData();
         this.renderList(list);
     }
-    renderList(list) {
-        this.listElement.innerHTML = '';
-        const template = document.getElementById('product-card-template');
-        this.renderListWithTemplate(template, this.listElement, list, this.prepareTemplate);
-    }
     prepareTemplate(template, product) {
         template.querySelector('a').href += product.Id;
         template.querySelector('img').src = product.Image;
@@ -22,6 +17,11 @@ export default class ProductList {
         template.querySelector('.card__brand').textContent = product.Brand.Name;
         template.querySelector('.card__name').textContent = product.NameWithoutBrand;
         template.querySelector('.product-card__price').textContent += product.FinalPrice;
+    }
+    renderList(list) {
+        this.listElement.innerHTML = '';
+        const template = document.getElementById('product-card-template');
+        renderListWithTemplate(template, this.listElement, list, this.prepareTemplate);
     }
     // renderList(list) {
     // const template = document.getElementById('product-card-template');
