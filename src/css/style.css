@@ -219,3 +219,9 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+.discount {
+  color: red;
+  font-size: 1.2em;
+  position: relative;
+
+}
