@@ -18,7 +18,7 @@ export default class ProductDetails {
   }
   addToCart() {
     
-   let items = getLocalStorage('so-cart')
+   let items = getLocalStorage('so-cart') != null ? getLocalStorage('so-cart') : [];
    items.push(this.product)
        setLocalStorage('so-cart', items)
 
