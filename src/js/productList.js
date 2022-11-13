@@ -9,6 +9,7 @@ export default class ProductList {
     async init() {
         const list = await this.dataSource.getData();
         this.renderList(list);
+
     }
     prepareTemplate(template, product) {
         template.querySelector('a').href += product.Id;
@@ -17,6 +18,7 @@ export default class ProductList {
         template.querySelector('.card__brand').textContent = product.Brand.Name;
         template.querySelector('.card__name').textContent = product.NameWithoutBrand;
         template.querySelector('.product-card__price').textContent += product.FinalPrice;
+        return template;
     }
     renderList(list) {
         this.listElement.innerHTML = '';
