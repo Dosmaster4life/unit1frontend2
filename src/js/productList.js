@@ -22,8 +22,10 @@ export default class ProductList {
   }
   renderList(list) {
     this.listElement.innerHTML = '';
+    // filter out products that do not have an  id of 880RR,985RF,989CG, 985PR in list
+    const filteredList = list.filter(item => item.Id === '880RR' || item.Id === '985RF' || item.Id === '989CG' || item.Id === '985PR');
     const template = document.getElementById('product-card-template');
-    renderListWithTemplate(template, this.listElement, list, this.prepareTemplate);
+    renderListWithTemplate(template, this.listElement, filteredList, this.prepareTemplate);
     
   }
 }
