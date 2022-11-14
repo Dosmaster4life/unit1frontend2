@@ -11,13 +11,11 @@ export default class ProductData  {
         this.category = category;
         this.path = `../json/${this.category}.json`;
     }
-    async getData() {
-        const res = await fetch(this.path);
-      const data = await convertToJson(res);
-      return data;
+    getData() {
+      return fetch(this.path)
+        .then(convertToJson).then((data) => data);
     }
     async findProductById(id) {
-     
         const product = await this.getData();
         return product.find(item => item.Id === id);
     }
