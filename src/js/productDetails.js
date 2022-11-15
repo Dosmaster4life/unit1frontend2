@@ -1,5 +1,9 @@
 import { setLocalStorage } from './utils.js';
 import { getLocalStorage } from './utils.js';
+import { loadHeaderFooter
+ } from './utils.js';
+
+ loadHeaderFooter();
 
 
 export default class ProductDetails {
