@@ -118,17 +118,18 @@ button {
   max-width: 600px;
   margin: auto;
 }
-.products {
+.products, .categories {
   padding: 0.5em;
 }
-.product-list {
+
+.product-list, .categories-grid {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   list-style-type: none;
   padding: 0;
 }
-.product-list a {
+.product-list a, .categories-grid a {
   text-decoration: none;
   color: var(--dark-grey);
 }
@@ -143,6 +144,7 @@ button {
 .product-card h2,
 .product-card h3,
 .product-card p {
+  text-align: center;
   margin: 0.5em 0;
 }
 

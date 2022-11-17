@@ -11,6 +11,7 @@ export default class ProductDetails {
   }
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
+    console.log(this.productId)
     document.querySelector('main').innerHTML = this.renderProductDetails();
     // add listener to Add to Cart button
     document.getElementById('addToCart')
@@ -28,7 +29,7 @@ export default class ProductDetails {
     <h2 class="divider">${this.product.NameWithoutBrand}</h2>
     <img
       class="divider"
-      src="${this.product.Image}"
+      src="${this.product.Images.PrimaryLarge}"
       alt="${this.product.NameWithoutBrand}"
     />
     <p class="product-card__price">$<s>${this.product.FinalPrice}</s> $${this.product.FinalPrice - (this.product.FinalPrice * .15).toFixed(2)}<span class="discount">15% Off Today Only!</spam></p>
