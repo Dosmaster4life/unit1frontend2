@@ -16,7 +16,8 @@ export default class CartList {
     template.querySelector('.cart-card__image img').alt += product.Name;
     template.querySelector('.card__name').textContent = product.Name;
     template.querySelector('.cart-card__color').textContent = product.Colors[0].ColorName;
-    template.querySelector('.cart-card__price').textContent += product.FinalPrice; 
+    template.querySelector('.cart-card__price').textContent += product.FinalPrice;
+    template.querySelector('.cart-card__quantity').textContent += product.Quantity; 
     return template;
   }
   
