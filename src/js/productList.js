@@ -7,13 +7,15 @@ export default class ProductList {
     this.listElement = listElement;
   }
   async init() {
-    const list = await this.dataSource.getData();
+    const list = await this.dataSource.getData(this.category);
+    // capitilize the first letter of this.category
+    document.querySelector('.category_title').innerHTML = this.category.charAt(0).toUpperCase() + this.category.slice(1);
     this.renderList(list);
   }
   
   prepareTemplate(template, product) {
     template.querySelector('a').href +=  product.Id;
-    template.querySelector('img').src = product.Image;
+    template.querySelector('img').src = product.Images.PrimaryMedium ;
     template.querySelector('img').alt += product.Name;
     template.querySelector('.card__brand').textContent = product.Brand.Name;
     template.querySelector('.card__name').textContent = product.NameWithoutBrand;
@@ -21,11 +23,12 @@ export default class ProductList {
     return template;
   }
   renderList(list) {
+    console.log(list)
     this.listElement.innerHTML = '';
     // filter out products that do not have an  id of 880RR,985RF,989CG, 985PR in list
-    const filteredList = list.filter(item => item.Id === '880RR' || item.Id === '985RF' || item.Id === '989CG' || item.Id === '985PR');
+    //const filteredList = list.filter(item => item.Id === '880RR' || item.Id === '985RF' || item.Id === '989CG' || item.Id === '985PR');
     const template = document.getElementById('product-card-template');
-    renderListWithTemplate(template, this.listElement, filteredList, this.prepareTemplate);
+    renderListWithTemplate(template, this.listElement, list, this.prepareTemplate);
     
   }
 }
