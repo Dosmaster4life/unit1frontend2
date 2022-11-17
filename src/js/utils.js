@@ -46,8 +46,12 @@ export function renderWithTemplate(template, parent, data, callback) {
   let clone = template.content.cloneNode(true);
   if(callback) {
     clone = callback(clone,data);
+  } try {
+    parent.appendChild(clone);
+  } catch(e) {
+    console.log(e);
   }
-  parent.appendChild(clone);
+  
 }
 export async function loadTemplate (path) {
   const html = await fetch(path).then(convertToText);
