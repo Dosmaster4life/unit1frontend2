@@ -3,18 +3,19 @@ module.exports = {
     // ['@snowpack/plugin-sass' ],
   ],
   mount: {
-    src: "/",
+    src: '/',
   },
   buildOptions: {
-    out: "build",
-    baseUrl: "/sleepoutside/build/",
+    out: 'build',
+    baseUrl: '/sleepoutside/build/',
     clean: true,
+    htmlFragments: true,
   },
   experiments: {
     optimize: {
       // 'bundle': true,
       minify: true,
-      target: "es2015",
+      target: 'es2015',
     },
   },
 };
