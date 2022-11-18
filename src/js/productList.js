@@ -14,6 +14,7 @@ export default class ProductList {
   }
   
   prepareTemplate(template, product) {
+    console.log(product)
     template.querySelector('a').href +=  product.Id;
     template.querySelector('img').src = product.Images.PrimaryMedium ;
     template.querySelector('img').alt += product.Name;
