@@ -14,16 +14,17 @@ export default class ProductList {
   }
   
   prepareTemplate(template, product) {
+    console.log(product)
     template.querySelector('a').href +=  product.Id;
     template.querySelector('img').src = product.Images.PrimaryMedium ;
     template.querySelector('img').alt += product.Name;
     template.querySelector('.card__brand').textContent = product.Brand.Name;
     template.querySelector('.card__name').textContent = product.NameWithoutBrand;
     template.querySelector('.product-card__price').textContent += product.FinalPrice; 
+
     return template;
   }
   renderList(list) {
-    console.log(list)
     this.listElement.innerHTML = '';
     // filter out products that do not have an  id of 880RR,985RF,989CG, 985PR in list
     //const filteredList = list.filter(item => item.Id === '880RR' || item.Id === '985RF' || item.Id === '989CG' || item.Id === '985PR');
