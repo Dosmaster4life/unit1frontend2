@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sleep Outside | Cart</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <!-- HTML Template to build cart card -->
-    <template id="cart-card-template">
-      <li class="cart-card divider">
-        <a href="#" class="cart-card__image">
-          <img src="" alt="Image of " />
-        </a>
-        <a href="#">
-          <h2 class="card__name"></h2>
-        </a>
-        <p class="cart-card__color"></p>
-        <p>Qty: <button id="minus">-</button> <span class="cart-card__quantity"></span> <button id="plus">+</button></p>
-        <p class="cart-card__price">$</p>
-      </li>
-    </template>
-  </head>
-  <body>
-    <header class="divider" id="main-header">
-      <!-- Fill header content from partials/header.html -->
-    </header>
-    <main class="divider">
-      <section class="products">
-        <h2>My Cart</h2>
-        <ul class="product-list"></ul>
 
-        </ul>
-      </section>
-    </main>
-    <footer id="main-footer">
-      <!-- Fill footer content from partials/footer.html -->
-    </footer>
-    <script src="../js/cart.js" type="module"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Outside | Cart</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- HTML Template to build cart card -->
+  <template id="cart-card-template">
+    <li class="cart-card divider">
+      <a href="" class="cart-card__image">
+        <img src="" alt="Image of " />
+      </a>
+      <a id="product-details-link" href="#">
+        <h2 class="card__name"></h2>
+      </a>
+      <p class="cart-card__color"></p>
+      <p>Qty: <button class="minus itemID" data-id="">-</button> <span class="cart-card__quantity"></span> <button
+          class="plus itemID" data-id="">+</button></p>
+      <p class="cart-card__price">$</p>
+    </li>
+  </template>
+</head>
+
+<body>
+  <header class="divider" id="main-header">
+    <!-- Fill header content from partials/header.html -->
+  </header>
+  <main class="divider">
+    <section class="products">
+      <h2>My Cart</h2>
+      <ul class="product-list"></ul>
+
+      </ul>
+    </section>
+  </main>
+  <footer id="main-footer">
+    <!-- Fill footer content from partials/footer.html -->
+  </footer>
+  <script src="../js/cart.js" type="module"></script>
+</body>
+
 </html>

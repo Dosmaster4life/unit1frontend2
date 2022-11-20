@@ -230,7 +230,7 @@ footer {
 
 }
 
-#minus, #plus {
+.minus, .plus {
   padding: 0.25em .5em;
   background-color: var(--secondary-color);
   color: white;

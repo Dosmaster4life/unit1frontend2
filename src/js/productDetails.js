@@ -1,37 +1,42 @@
-import { setLocalStorage, getLocalStorage, loadHeaderFooter } from './utils.js';
+import {
+  setLocalStorage,
+  getLocalStorage,
+  loadHeaderFooter
+} from './utils.js';
 
 loadHeaderFooter();
 
 export default class ProductDetails {
-  constructor(productId, dataSource){
+  constructor(productId, dataSource) {
     this.productId = productId;
     this.product = {};
     this.dataSource = dataSource;
-    
+
   }
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
     document.querySelector('main').innerHTML = this.renderProductDetails();
     // add listener to Add to Cart button
     document.getElementById('addToCart')
-            .addEventListener('click', this.addToCart.bind(this));
+      .addEventListener('click', this.addToCart.bind(this));
   }
   addToCart() {
-    
-   let items = getLocalStorage('so-cart') != null ? getLocalStorage('so-cart') : [];
-   // if item is in cart, increase quantity
+
+    let items = getLocalStorage('so-cart') != null ? getLocalStorage('so-cart') : [];
+    // if item is in cart, increase quantity
     const item = items.find(item => item.Id === this.product.Id);
     if (item) {
       item.Quantity != null ? item.Quantity++ : item.Quantity = 2;
-      
+
     } else {
       // add item to cart
+      this.product.Quantity = 1;
       items.push(this.product)
     }
- // items.push(this.product)
-      setLocalStorage('so-cart', items)
+    // items.push(this.product)
+    setLocalStorage('so-cart', items)
 
-}
+  }
   renderProductDetails() {
     return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
     <h2 class="divider">${this.product.NameWithoutBrand}</h2>
