@@ -47,9 +47,13 @@ export default class CartList {
   minus(e) {
     let items = getLocalStorage('so-cart');
     const item = items.find(item => item.Id === e.target.getAttribute('data-id'));
-    item.Quantity != null ? item.Quantity-- : item.Quantity = 0;
+    if (item.Quantity > 1) {
+      item.Quantity--;
     setLocalStorage('so-cart', items);
     this.init();
+    } else {
+      item.Quantity = 1;
+    }
   }
   plus(e) {
     let items = getLocalStorage('so-cart');
