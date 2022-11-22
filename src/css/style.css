@@ -205,6 +205,84 @@ button {
   grid-column: 3;
 }
 
+.discount {
+  color: red;
+  font-size: 1.2em;
+  position: relative;
+
+}
+
+.minus, .plus, .remove {
+  padding: 0.25em .5em;
+  background-color: var(--secondary-color);
+  color: white;
+  margin: 5px 10px auto 10px;
+  display: inline-block;
+  border: 0;
+  font-size: var(--large-font);
+}
+
+.cart-card__total {
+  font-size: var(--large-font);
+  font-weight: bold;
+  grid-column: 3/4;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.cart-total, .cart-value {
+  font-size: var(--large-font);
+  font-weight: bold;
+}
+
+.checkout-button {
+  margin: 20px auto;
+  padding: 0.5em 2em;
+  background-color: var(--secondary-color);
+  color: white;
+  display: block;
+  border: 0;
+  font-size: var(--large-font);
+}
+
+.cart-footer .checkout-button {
+  margin: 20px;
+}
+
+form {
+  margin: 20px auto;
+}
+
+.checkout-form fieldset {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+label {
+  margin: 5px auto;
+  align-items: center;
+  width: 80%;
+}
+
+input, select {
+  margin: 5px auto;
+  align-items: center;
+  width: 100%;
+}
+
+.order-summary {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.right-align {
+  text-align: right;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -223,19 +301,12 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
-.discount {
-  color: red;
-  font-size: 1.2em;
-  position: relative;
 
+
+.hide {
+  display: none;
 }
 
-.minus, .plus {
-  padding: 0.25em .5em;
-  background-color: var(--secondary-color);
-  color: white;
-  margin: 5px 10px auto 10px;
-  display: inline-block;
-  border: 0;
-  font-size: var(--large-font);
+form {
+  max-width: 500px;
 }

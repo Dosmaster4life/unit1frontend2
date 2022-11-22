@@ -17,8 +17,9 @@
       </a>
       <p class="cart-card__color"></p>
       <p>Qty: <button class="minus itemID" data-id="">-</button> <span class="cart-card__quantity"></span> <button
-          class="plus itemID" data-id="">+</button></p>
-      <p class="cart-card__price">$</p>
+          class="plus itemID" data-id="">+</button> <button class="remove">X</button></p>
+      <p class="cart-card__price">Item Price: $</p>
+      <p class="cart-card__total">Total: $</p>
     </li>
   </template>
 </head>
@@ -34,6 +35,10 @@
 
       </ul>
     </section>
+    <div class="cart-footer hide">
+      <p class="cart-total">Total: $<span class="cart-total cart-value"></span></p>
+      <button class="checkout-button" onclick="location.href='../checkout/index.html';">Checkout</button>
+    </div>
   </main>
   <footer id="main-footer">
     <!-- Fill footer content from partials/footer.html -->
