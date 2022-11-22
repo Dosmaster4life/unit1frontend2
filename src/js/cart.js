@@ -6,6 +6,8 @@ loadHeaderFooter();
 const cart = new CartList('so-cart', document.querySelector('.product-list'));
 cart.init();
 
+
+
 // function getLocalStorage(key) {
 //   return JSON.parse(localStorage.getItem(key));
 // }

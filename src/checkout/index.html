@@ -11,12 +11,114 @@
       <!-- Fill header content from partials/header.html -->
     </header>
     <main class="divider">
-      <section class="products">
+      <section class="checkout">
         <h2>Review & Place your Order</h2>
+        <form class="shipping checkout-form">
+          <fieldset>
+            <legend>Shipping Address</legend>
+            <label for ="first-name">First Name<br>
+              <input type="text" id="first-name" name="first-name" required />
+            </label><br>
+            <label for ="last-name">Last Name<br>
+              <input type="text" id="last-name" name="last-name" required />
+            </label><br>
+            <label for ="street">Street<br>
+              <input type="text" id="street" name="street" required />
+            </label><br>
+            <label for ="city">City<br>
+              <input type="text" id="city" name="city" required />
+            </label><br>
+            <label for ="state">State<br>
+              <select id="state" name="state" required >
+                <option value="" selected>Select Your State</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+              </select><br>
+            </label>
+            <label for="zip">Zip Code<br>
+              <input type="text" id="zip" name="zip" required />
+            </label>
+          </fieldset>
+        </form>
+        <form class="payment checkout-form">
+          <fieldset>
+            <legend>Payment</legend>
+            <label for="card-number">Card Number<br>
+              <input type="text" id="card-number" name="card-number" required />
+            </label><br>
+            <label for="exp-date">Expiration Date<br>
+              <input type="text" id="exp-date" name="exp-date" required />
+            </label><br>
+            <label for="cvv">CVV<br>
+              <input type="text" id="cvv" name="cvv" required />
+            </label>
+          </fieldset>
+        </form>
+        <form class="summary checkout-form">
+          <fieldset>
+            <legend>Order Summary</legend>
+            <div class="order-summary">
+              <p class="item-summary">Item Subtotal (<span class="total-cart-quantity"></span>) <span class="cart-subtotal right-align"></span></p>
+              <p class="shipping-est">Shipping Estimate <span class="shipping-cost right-align"></span></p>
+              <p class="tax-est">Tax Estimate <span class="tax-cost right-align"></span></p>
+              <p class="total-est">Order Total <span class="total-cost right-align"></span></p>
+          </fieldset>
+          <input type="submit" value="Checkout" class="checkout-button"></input>
+        </form>
       </section>
     </main>
     <footer id="main-footer">
       <!-- Fill footer content from partials/footer.html -->
     </footer>
+    <script src="../js/checkout.js" type="module"></script>
   </body>
 </html>
