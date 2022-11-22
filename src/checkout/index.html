@@ -13,14 +13,14 @@
     <main class="divider">
       <section class="checkout">
         <h2>Review & Place your Order</h2>
-        <form class="shipping checkout-form">
-          <fieldset>
+        <form class="form" name="checkout">
+          <fieldset class="shipping checkout-form">
             <legend>Shipping Address</legend>
-            <label for ="first-name">First Name<br>
-              <input type="text" id="first-name" name="first-name" required />
+            <label for ="fname">First Name<br>
+              <input type="text" id="fname" name="fname" required />
             </label><br>
-            <label for ="last-name">Last Name<br>
-              <input type="text" id="last-name" name="last-name" required />
+            <label for ="lname">Last Name<br>
+              <input type="text" id="lname" name="lname" required />
             </label><br>
             <label for ="street">Street<br>
               <input type="text" id="street" name="street" required />
@@ -88,31 +88,40 @@
               <input type="text" id="zip" name="zip" required />
             </label>
           </fieldset>
-        </form>
-        <form class="payment checkout-form">
-          <fieldset>
+          <fieldset class="payment checkout-form">
             <legend>Payment</legend>
-            <label for="card-number">Card Number<br>
-              <input type="text" id="card-number" name="card-number" required />
+            <label for="cardNumber">Card Number<br>
+              <input type="text" id="cardNumber" name="cardNumber" required />
             </label><br>
-            <label for="exp-date">Expiration Date<br>
-              <input type="text" id="exp-date" name="exp-date" required />
+            <label for="expiration">Expiration Date<br>
+              <input type="text" id="expiration" name="expiration" required />
             </label><br>
-            <label for="cvv">CVV<br>
-              <input type="text" id="cvv" name="cvv" required />
+            <label for="code">CVV<br>
+              <input type="text" id="code" name="code" required />
             </label>
           </fieldset>
-        </form>
-        <form class="summary checkout-form">
-          <fieldset>
+          <fieldset class="summary checkout-form">
             <legend>Order Summary</legend>
-            <div class="order-summary">
-              <p class="item-summary">Item Subtotal (<span class="total-cart-quantity"></span>) <span class="cart-subtotal right-align"></span></p>
-              <p class="shipping-est">Shipping Estimate <span class="shipping-cost right-align"></span></p>
-              <p class="tax-est">Tax Estimate <span class="tax-cost right-align"></span></p>
-              <p class="total-est">Order Total <span class="total-cost right-align"></span></p>
+            <ul class="order-summary">
+              <li>
+                <label for="cartTotal">Item Subtotal (<span class="total-cart-quantity"></span>)</label>
+                <p name="cartTotal" class="cart-subtotal right-align"></p>
+              </li>
+              <li>
+                <label for="shipping">Shipping Estimate</label>
+                <p name="shipping" class="shipping-cost right-align"></p>
+              </li>
+              <li>
+                <label for="tax">Tax</label>
+                <p name="tax" class="tax-cost right-align"></p>
+              </li>
+              <li>
+                <label for="orderTotal">Order Total</label>
+                <p name="orderTotal" class="total-cost right-align"></p>
+              </li>
+            </ul>
           </fieldset>
-          <input type="submit" value="Checkout" class="checkout-button"></input>
+          <button type="submit" id="checkoutSubmit" class="checkout-button">Checkout</button>
         </form>
       </section>
     </main>

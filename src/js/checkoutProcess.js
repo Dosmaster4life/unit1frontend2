@@ -1,6 +1,27 @@
-import {
-  getLocalStorage,
-} from './utils.js';
+import { getLocalStorage } from './utils.js';
+import ExternalServices from './externalServices.js';
+
+const services = new ExternalServices();
+function formDataToJSON(formElement) {
+    const formData = new FormData(formElement), convertedJSON = {};
+    formData.forEach(function (value, key) {
+        convertedJSON[key] = value;
+    });
+    return convertedJSON;
+}
+
+function packageItems(items) {
+    const simplifiedItems = items.map((item) => {
+        console.log(item);
+        return {
+            id: item.Id,
+            price: item.FinalPrice,
+            name: item.Name,
+            quantity: 1,
+        };  
+    });
+    return simplifiedItems;
+}
 
 export default class CheckoutProcess {
 
@@ -31,7 +52,7 @@ export default class CheckoutProcess {
 
   calculateOrderTotal() {
     if (this.qty > 1) {
-      this.shipping = 10.00 + (this.qty * 2);
+      this.shipping = 10.00 + ((this.qty - 1) * 2);
     } else {
       this.shipping = 10.00;
     }
@@ -48,4 +69,20 @@ export default class CheckoutProcess {
     document.querySelector('.total-cost').textContent = '$' + this.orderTotal.toFixed(2);
   }
 
+  async checkout(form) {
+    const formElement = document.forms['checkout'];
+    const json = formDataToJSON(formElement);
+    json.orderDate = new Date();
+    json.orderTotal = this.orderTotal;
+    json.tax = this.tax;
+    json.shipping = this.shipping;
+    json.items = packageItems(this.list);
+    console.log(json);
+    try {
+        const res = await services.checkout(json);
+        console.log(res);
+    } catch (err) {
+        console.log(err);
+    }
+  }
 }

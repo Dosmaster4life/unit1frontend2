@@ -253,7 +253,7 @@ button {
   margin: 20px;
 }
 
-.checkout-form {
+form {
   margin: 20px auto;
 }
 
@@ -278,6 +278,7 @@ input, select {
   display: grid;
   grid-template-columns: 1fr;
 }
+
 .right-align {
   text-align: right;
 }

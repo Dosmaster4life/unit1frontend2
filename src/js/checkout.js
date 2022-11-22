@@ -3,5 +3,14 @@ import { loadHeaderFooter } from './utils';
 
 loadHeaderFooter();
 
-const checkout = new CheckoutProcess('so-cart', document.querySelector('.product-list'));
-checkout.init();
+const myCheckout = new CheckoutProcess('so-cart', '.checkout-summary');
+myCheckout.init();
+
+document
+    .querySelector('#zip')
+    .addEventListener('blur', myCheckout.calculateOrderTotal.bind(myCheckout));
+
+document.querySelector('#checkoutSubmit').addEventListener('click', (e) => {
+    e.preventDefault();
+    myCheckout.checkout();
+});
