@@ -81,18 +81,19 @@ export default class CartList {
     setLocalStorage('so-cart', items);
     this.init()
   }
-}
 
-export function calculateCartTotal() {
-  if (document.querySelector('.product-list').innerHTML != '') {
-    let items = getLocalStorage('so-cart');
-    let total = 0;
-    items.forEach(item => {
-      total += item.FinalPrice * item.Quantity;
-    });
-    document.querySelector('.cart-value').textContent = total.toFixed(2);
-    document.querySelector('.cart-footer').classList.remove('hide');
-  } else {
-    document.querySelector('.cart-footer').classList.add('hide');
+  calculateCartTotal() {
+    if (document.querySelector('.product-list').innerHTML != '') {
+      let items = getLocalStorage('so-cart');
+      let total = 0;
+      items.forEach(item => {
+        total += item.FinalPrice * item.Quantity;
+      });
+      document.querySelector('.cart-value').textContent = total.toFixed(2);
+      document.querySelector('.cart-footer').classList.remove('hide');
+    } else {
+      document.querySelector('.cart-footer').classList.add('hide');
+    }
   }
+
 }
