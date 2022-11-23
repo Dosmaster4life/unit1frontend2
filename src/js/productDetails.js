@@ -1,7 +1,8 @@
 import {
   setLocalStorage,
   getLocalStorage,
-  loadHeaderFooter
+  loadHeaderFooter, 
+  alertMessage
 } from './utils.js';
 
 loadHeaderFooter();
@@ -35,6 +36,7 @@ export default class ProductDetails {
     }
     // items.push(this.product)
     setLocalStorage('so-cart', items)
+    alertMessage('Item added to cart', 'success');
 
   }
   renderProductDetails() {

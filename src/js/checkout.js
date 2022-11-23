@@ -1,5 +1,5 @@
 import CheckoutProcess from './checkoutProcess';
-import { loadHeaderFooter } from './utils';
+import { loadHeaderFooter, getParam } from './utils';
 
 loadHeaderFooter();
 
@@ -12,5 +12,13 @@ document
 
 document.querySelector('#checkoutSubmit').addEventListener('click', (e) => {
     e.preventDefault();
-    myCheckout.checkout();
+    var myForm = document.forms[0];
+    var chk_status = myForm.checkValidity();
+    myForm.reportValidity();
+    if(chk_status) {
+        myCheckout.checkout();
+    }
 });
+
+
+
