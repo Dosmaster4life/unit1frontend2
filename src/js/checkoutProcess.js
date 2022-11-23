@@ -1,4 +1,4 @@
-import { getLocalStorage } from './utils.js';
+import { getLocalStorage, setLocalStorage } from './utils.js';
 import ExternalServices from './externalServices.js';
 
 const services = new ExternalServices();
@@ -81,6 +81,9 @@ export default class CheckoutProcess {
     try {
         const res = await services.checkout(json);
         console.log(res);
+        setLocalStorage('so-cart', []);
+        const orderNumber = res.orderId;
+        location.assign(`../checkout/checkedout.html?orderNumber=${orderNumber}`);
     } catch (err) {
         console.log(err);
     }

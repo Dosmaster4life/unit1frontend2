@@ -68,3 +68,16 @@ export async function loadHeaderFooter () {
   renderWithTemplate(footer, footerElement);
 }
 
+export function alertMessage (message, scroll = true) {
+  const alert = document.createElement('div');
+  alert.classList.add('alert');
+  alert.textContent = message;
+  // add alert to top of main element
+  document.querySelector('main').prepend(alert);
+  if(scroll) {
+    alert.scrollIntoView();
+  }
+  setTimeout(() => {
+    alert.remove();
+  }, 3000);
+}
