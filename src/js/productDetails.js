@@ -2,7 +2,8 @@ import {
   setLocalStorage,
   getLocalStorage,
   loadHeaderFooter, 
-  alertMessage
+  alertMessage,
+  getCartCount
 } from './utils.js';
 
 loadHeaderFooter();
@@ -17,6 +18,7 @@ export default class ProductDetails {
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
     document.querySelector('main').innerHTML = this.renderProductDetails();
+    this.addDiscount();
     // add listener to Add to Cart button
     document.getElementById('addToCart')
       .addEventListener('click', this.addToCart.bind(this));
@@ -36,6 +38,7 @@ export default class ProductDetails {
     }
     // items.push(this.product)
     setLocalStorage('so-cart', items)
+    this.animateAddToCart();
     alertMessage('Item added to cart', 'success');
 
   }
@@ -47,7 +50,7 @@ export default class ProductDetails {
       src="${this.product.Images.PrimaryLarge}"
       alt="${this.product.NameWithoutBrand}"
     />
-    <p class="product-card__price">$<s>${this.product.FinalPrice}</s> $${(this.product.FinalPrice - (this.product.FinalPrice * .15)).toFixed(2)}<span class="discount">15% Off Today Only!</span></p>
+    <p class="product-card__price">$<s>${this.product.FinalPrice}</s></p>
     <p class="product__color">${this.product.Colors[0].ColorName}</p>
     <p class="product__description">
     ${this.product.DescriptionHtmlSimple}
@@ -56,5 +59,28 @@ export default class ProductDetails {
       <button id="addToCart" data-id="${this.product.Id}">Add to Cart</button>
     </div></section>`;
   }
+
+  addDiscount() {
+    if (this.product.IsClearance === true) {
+      document.querySelector('.product-card__price').innerHTML = `<span class="strikethroughPrice">$${this.product.FinalPrice}</span> <span class="discount">$${(this.product.FinalPrice - (this.product.FinalPrice * .15)).toFixed(2)}</span> <span class="discountMessage">15% Off Today Only!</span>`;
+    } else {
+      document.querySelector('.product-card__price').innerHTML = `<p class="product-card__price">$${this.product.FinalPrice}</p>`;
+    }
+  }
+
+  animateAddToCart() {
+    const cart = document.querySelector('.cart');
+    const cartIcon = document.querySelector('#svgCart');
+    getCartCount();
+    cart.classList.add('apply-shake');
+    cartIcon.classList.add('apply-shake');
+    cart.addEventListener('animationend', (e) => {
+      cart.classList.remove('apply-shake');
+    });
+    cartIcon.addEventListener('animationend', (e) => {
+      cartIcon.classList.remove('apply-shake');
+    });
+  }
+
 
 }

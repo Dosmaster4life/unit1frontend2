@@ -20,48 +20,11 @@ export default class ProductList {
     template.querySelector('img').alt += product.Name;
     template.querySelector('.card__brand').textContent = product.Brand.Name;
     template.querySelector('.card__name').textContent = product.NameWithoutBrand;
-    //template.querySelector('.product-card__price').textContent += product.FinalPrice; 
-    const price = document.createElement('p');
-    // create child element to hold strikeout price
-    const strikeoutPrice = document.createElement('s');
-    // create child element to hold discount price
-    const discountPrice = document.createElement('span');
-    // create child element to hold discount text
-    // only add discountText if IsClearance property is true
-
     if (product.IsClearance) {
-      const discountText = document.createElement('span');
-      // add class to discount text
-      discountText.classList.add('discount');
-      // add text to discount text
-      discountText.textContent = '15% Off Today Only!';
-      // add text to discount price and limit to 2 decimal places
-      // add red color to discount price
-      discountPrice.innerHTML = `<span style="color:red">$${(product.FinalPrice - (product.FinalPrice * .15)).toFixed(2)}</span>`;
-
-
-   
-      // add text to strikeout price
-      strikeoutPrice.textContent = `$${product.FinalPrice}`;
-     
-      // remove any text in price
-      // add strikeout price to price element
-      price.appendChild(strikeoutPrice);
-      price.appendChild(discountPrice);
-      template.querySelector('.product-card__price').appendChild(discountText);
-      // remove $ from .product-card__price
-    }else {
-      price.textContent = `$${product.FinalPrice}`;
-
+      template.querySelector('.card__price').innerHTML = `<span class="strikethroughPrice">$${product.FinalPrice}</span><span class="discount">$${(product.FinalPrice - (product.FinalPrice * .15)).toFixed(2)}</span><br><span class="discountMessage">15% Off Today Only!</span>`;
+    } else {
+      template.querySelector('.card__price').innerHTML = `<span class="price">$${product.FinalPrice}</span>`;
     }
-      // add strikeout price
-    
-    template.querySelector('.product-card__price').textContent = '';
-    template.querySelector('.product-card__price').appendChild(price);
-    // add discount price to price element
-    // add 15% Off Today Only
-  
-   
 
     template.querySelector
     return template;

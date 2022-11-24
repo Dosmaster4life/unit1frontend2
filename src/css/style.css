@@ -109,6 +109,45 @@ button {
   fill: gray;
 }
 
+.cart-count {
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  background-color: var(--secondary-color);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+#svgCart {
+  position: absolute;
+  top: 2;
+  right: 0;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+.apply-shake {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+
 /* End cart icon styles */
 
 .mission {
@@ -146,6 +185,11 @@ button {
 .product-card p {
   text-align: center;
   margin: 0.5em 0;
+}
+
+.product-card img {
+  display: block;
+  margin: auto;
 }
 
 .card__brand {
@@ -205,11 +249,23 @@ button {
   grid-column: 3;
 }
 
-.discount {
-  color: red;
-  font-size: 1.2em;
-  position: relative;
+.product-card__price {
+  display: grid;
+  grid-template-columns: 1fr 3fr 4fr;
+}
+.strikethroughPrice {
+  text-decoration: line-through;
+}
 
+.discount, .discountMessage {
+  color: red;
+}
+.discountMessage {
+  text-align: right;
+}
+
+.card__price .discount, .cart-card__price .discount {
+  padding: 0 10px;
 }
 
 .minus, .plus, .remove {
