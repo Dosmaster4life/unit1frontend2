@@ -310,3 +310,10 @@ footer {
 form {
   max-width: 500px;
 }
+
+/* dropdown class to make it look nicer with bootstrap*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+}
