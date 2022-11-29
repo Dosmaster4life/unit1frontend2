@@ -105,6 +105,7 @@ export default class ProductList {
     // add strikeout price to price element
     price.appendChild(strikeoutPrice);
     price.appendChild(discountPrice);
+    try {
     template.querySelector('.product-card').appendChild(button);
     // remove $ from .product-card__price
     template.querySelector('.product-card__price').textContent = '';
@@ -112,7 +113,9 @@ export default class ProductList {
     // add discount price to price element
     // add 15% Off Today Only
     template.querySelector('.product-card__price').appendChild(discountText);
-
+    } catch (error) {
+     
+    }
    
 
     if (product.IsClearance) {
