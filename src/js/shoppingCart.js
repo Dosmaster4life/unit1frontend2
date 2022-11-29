@@ -1,7 +1,8 @@
 import {
   renderListWithTemplate,
   getLocalStorage,
-  setLocalStorage
+  setLocalStorage, 
+  getCartCount
 } from './utils.js';
 
 export default class CartList {
@@ -24,6 +25,7 @@ export default class CartList {
         item.addEventListener('click', this.remove.bind(this));
       });
       this.calculateCartTotal();
+      
     } else {
       this.listElement.innerHTML = '';
       document.querySelector('.cart-footer').classList.add('hide');
@@ -37,12 +39,17 @@ export default class CartList {
     template.querySelector('.cart-card__image img').alt += product.Name;
     template.querySelector('.card__name').textContent = product.Name;
     template.querySelector('.cart-card__color').textContent = product.Colors[0].ColorName;
-    template.querySelector('.cart-card__price').textContent += product.FinalPrice;
+    if (product.IsClearance === true) {
+      template.querySelector('.cart-card__price').innerHTML = `<span class="strikethroughPrice">$${product.FinalPrice}</span> <span class="discount">$${(product.FinalPrice - (product.FinalPrice * .15)).toFixed(2)}</span>`;
+      template.querySelector('.cart-card__total').textContent += ((product.FinalPrice - (product.FinalPrice * .15)) * product.Quantity).toFixed(2) ;
+    } else {
+      template.querySelector('.cart-card__price').textContent = `$${product.FinalPrice}`;
+      template.querySelector('.cart-card__total').textContent += product.FinalPrice * product.Quantity;
+    }
     template.querySelector('.cart-card__quantity').textContent += product.Quantity;
     template.querySelector('.minus').setAttribute('data-id', product.Id);
     template.querySelector('.plus').setAttribute('data-id', product.Id);
     template.querySelector('.remove').setAttribute('data-id', product.Id);
-    template.querySelector('.cart-card__total').textContent += product.FinalPrice * product.Quantity;
     return template;
   }
 
@@ -61,6 +68,7 @@ export default class CartList {
     if (item.Quantity > 1) {
       item.Quantity--;
       setLocalStorage('so-cart', items);
+      getCartCount();
       this.init();
     } else {
       item.Quantity = 1;
@@ -71,6 +79,7 @@ export default class CartList {
     const item = items.find(item => item.Id === e.target.getAttribute('data-id'));
     item.Quantity != null ? item.Quantity++ : item.Quantity = 2;
     setLocalStorage('so-cart', items);
+    getCartCount();
     this.init();
   }
 
@@ -79,6 +88,7 @@ export default class CartList {
     const item = items.find(item => item.Id === e.target.getAttribute('data-id'));
     items.splice(items.indexOf(item), 1);
     setLocalStorage('so-cart', items);
+    getCartCount();
     this.init()
   }
 

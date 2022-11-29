@@ -65,6 +65,7 @@ export async function loadHeaderFooter () {
   const headerElement = document.getElementById('main-header');
   const footerElement = document.getElementById('main-footer');
   renderWithTemplate(header, headerElement);
+  getCartCount();
   renderWithTemplate(footer, footerElement);
 }
 
@@ -80,4 +81,13 @@ export function alertMessage (message, scroll = true) {
   setTimeout(() => {
     alert.remove();
   }, 3000);
+}
+
+export function getCartCount() {
+  let cartQty = 0;
+    let items = getLocalStorage('so-cart') != null ? getLocalStorage('so-cart') : [];
+    items.forEach(item => {
+      cartQty += item.Quantity;
+    });
+  document.querySelector('.cart-count').textContent = cartQty;
 }
