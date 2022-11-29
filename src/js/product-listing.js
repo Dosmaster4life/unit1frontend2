@@ -8,5 +8,5 @@ const category = getParam('category');
 const dataSource = new ExternalServices();
 const listElement = document.querySelector('.product-list');
 const product_list = new ProductList(category, dataSource, listElement);
-
+#
 product_list.init();
