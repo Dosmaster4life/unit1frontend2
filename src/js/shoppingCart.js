@@ -93,6 +93,7 @@ export default class CartList {
   }
 
   calculateCartTotal() {
+    // checks for cart duplicates and adds the quantities together
     if (document.querySelector('.product-list').innerHTML != '') {
       let items = getLocalStorage('so-cart');
       let total = 0;

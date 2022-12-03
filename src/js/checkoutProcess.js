@@ -12,7 +12,6 @@ function formDataToJSON(formElement) {
 
 function packageItems(items) {
     const simplifiedItems = items.map((item) => {
-        console.log(item);
         return {
             id: item.Id,
             price: item.FinalPrice,
