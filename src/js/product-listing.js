@@ -4,6 +4,7 @@ import { loadHeaderFooter, getParam } from './utils.js';
 
 loadHeaderFooter();
 
+
 const category = getParam('category');
 const dataSource = new ExternalServices();
 const listElement = document.querySelector('.product-list');
