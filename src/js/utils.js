@@ -64,6 +64,31 @@ export async function loadHeaderFooter () {
   const footer = await loadTemplate('../partials/footer.html');
   const headerElement = document.getElementById('main-header');
   const footerElement = document.getElementById('main-footer');
+
+  //add sign up box to the footer that has an email input and a submit button, when the button is clicked, save the email to localstorage and don't show the box again
+  const signUpBox = document.createElement('div');
+  signUpBox.classList.add('sign-up-box');
+  signUpBox.innerHTML = `
+  <div class="sign-up-box__content">
+  <h6 class="sign-up-box__title">Sign up for our newsletter!</h6>
+  <input class="sign-up-box__input" type="email" placeholder="Email">
+  <button class="sign-up-box__button">Submit</button>
+  </div>
+  `;
+  // button listener for sign up box
+  signUpBox.querySelector('.sign-up-box__button').addEventListener('click', () => {
+    // get the email from the input
+    const email = signUpBox.querySelector('.sign-up-box__input').value;
+    // save the email to local storage
+    setLocalStorage('email', email);
+    // remove the sign up box from the page
+    signUpBox.remove();
+    // show alert to user that they have registered
+    alert('You have registered for the newsletter!');
+  });
+  if(localStorage.getItem('email') === null) {
+    footerElement.appendChild(signUpBox);
+  }
   renderWithTemplate(header, headerElement);
   getCartCount();
   renderWithTemplate(footer, footerElement);
